@@ -11,7 +11,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173", "https://3melody.github.io/jessadaporn-portfolio/","https://jessadaporn-portfolio.vercel.app/"])
+CORS(app, origins=["http://localhost:5173", "https://3melody.github.io/jessadaporn-portfolio","https://jessadaporn-portfolio.vercel.app"])
 
 # ดึงค่าจาก .env
 SMTP_SERVER = os.getenv("SMTP_SERVER")
