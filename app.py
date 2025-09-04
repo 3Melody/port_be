@@ -3,12 +3,15 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
+from flask_cors import CORS
+
 import os
 
 # โหลดค่า .env
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:5173", "https://3melody.github.io/jessadaporn-portfolio/"])
 
 # ดึงค่าจาก .env
 SMTP_SERVER = os.getenv("SMTP_SERVER")
@@ -53,4 +56,7 @@ def send_email():
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Render จะส่ง port ผ่าน environment
+    app.run(host="0.0.0.0", port=port)
+
